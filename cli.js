@@ -1,34 +1,51 @@
 #!/usr/bin/env node
+const { getJS, getDist, getOS, getRelease } = require('guld-env')
 const program = require('commander')
-const pkg = require('./package.json')
-const VERSION = pkg.version
-const NAME = Object.keys(pkg.bin)[0]
+const VERSION = require('./package.json').version
 
-const COMMANDS = {
-  'config': ['Manage git config files the guld way.', {isDefault: true}],
-  'env': ['Guld environment detection module.'],
-  'git': ['Guld standardized Command Line Interface (CLI) for git.']
+/* eslint-disable no-console */
+async function printall () {
+  console.log(await getOS())
+  console.log(await getDist())
+  console.log(await getRelease())
+  console.log(getJS())
 }
 
-program
-  .name('guld')
-  .version(VERSION)
-  .description('Guld decentralized internet CLI.')
-  .option('-u, --user', 'The user name to set up.')
-  .option('-r, --recipient', 'The recipient of a message or transaction.')
-  .option('-f, --fingerprint', 'The PGP fingerprint to sign with.')
-  // .option('-q, --quiet', '')
-
-for (var cmd in COMMANDS) {
-  var cmds = COMMANDS[cmd]
-  var desc = cmds.shift()
-  if (cmds.length > 0) {
-    program.command(cmd, desc, ...cmds).description(desc)
-  } else {
-    program.command(cmd, desc).description(desc)
-  }
+if (process.argv.length === 2) {
+  printall()
+} else {
+  program
+    .version(VERSION)
+    .description('Guld environment detection module.')
+    .command('js')
+    .description('Get the JS execution environment (always node from CLI)')
+    .action(function (cmd) {
+      return console.log(getJS())
+    })
+  program
+    .command('os')
+    .description('Get the operating system.')
+    .action(async function (cmd) {
+      return console.log(await getOS())
+    })
+  program
+    .command('dist')
+    .description('Get the distro, if linux OS.')
+    .action(async function (cmd) {
+      return console.log(await getDist())
+    })
+  program
+    .command('release')
+    .description('Get the distro release, if linux OS.')
+    .action(async function (cmd) {
+      return console.log(await getRelease())
+    })
+  program
+    .command('all')
+    .description('Get the os, distro, release, and JS environment. In that order.')
+    .action(async function (cmd) {
+      printall()
+    })
+  program.parse(process.argv)
 }
-
-program.parse(process.argv)
-
-module.exports = program
+/* eslint-enable no-console */
