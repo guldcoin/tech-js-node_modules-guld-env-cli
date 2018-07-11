@@ -1,6 +1,6 @@
 {
   "name": "guld-env-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Guld environment detection CLI.",
   "bin": {
     "guld-env": "./cli.js"
@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.16.0",
-    "guld-env": "^1.0.9"
+    "guld-env": "^1.0.10"
   },
   "devDependencies": {
     "eslint": "^5.1.0",
