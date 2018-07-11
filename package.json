@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.16.0",
-    "guld-env": "^1.0.7"
+    "guld-env": "^1.0.8"
   },
   "devDependencies": {
     "eslint": "^5.1.0",
