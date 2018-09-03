@@ -21,9 +21,9 @@ npm i -g guld-env-cli
 ```sh
 guld-env --help
 
-  Usage:  [options] [command]
+  Usage: guld-env [options] [command]
 
-  Guld environment detection module.
+  Guld environment detection CLI.
 
   Options:
 
