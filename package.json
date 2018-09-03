@@ -1,6 +1,6 @@
 {
   "name": "guld-env-cli",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Guld environment detection CLI.",
   "bin": {
     "guld-env": "cli.js"
