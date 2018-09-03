@@ -35,7 +35,7 @@ npm i -g guld-env-cli
 
 ```
 linux
-Ubuntu Linux
+Ubuntu
 18.04 bionic
 node@10.5.0
 ```
