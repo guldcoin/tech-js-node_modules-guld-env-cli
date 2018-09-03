@@ -3,12 +3,14 @@
   "version": "1.0.12",
   "description": "Guld environment detection CLI.",
   "bin": {
-    "guld-env": "./cli.js"
+    "guld-env": "cli.js"
   },
   "preferGlobal": true,
   "scripts": {
     "lint": "eslint --env browser *.js*",
-    "fix": "eslint --fix *.js*"
+    "fix": "eslint --fix *.js*",
+    "test": "mocha test/*.js",
+    "test:lint": "npm run lint && npm run test"
   },
   "keywords": [
     "guld",
@@ -18,7 +20,8 @@
     "distro detection",
     "environment",
     "configuration",
-    "detection"
+    "detection",
+    "node"
   ],
   "author": "isysd",
   "license": "MIT",
@@ -35,7 +38,10 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "npm-check-updates": "^2.14.2"
   },
   "pre-commit": [
     "lint"
@@ -44,6 +50,6 @@
   "engines": {
     "node": ">=7"
   },
-  "homepage": "https://bitbucket.org/isysd/tech-js-node_modules-guld-env-cli#readme",
-  "repository": "git@bitbucket.org:isysd/tech-js-node_modules-guld-env-cli.git"
+  "homepage": "https://guld.tech/cli/guld-env-cli.html",
+  "repository": "https://bitbucket.org/guld/tech-js-node_modules-guld-env-cli"
 }

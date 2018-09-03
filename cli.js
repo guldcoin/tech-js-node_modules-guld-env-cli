@@ -13,41 +13,41 @@ async function printall () {
   console.log(guldEnv.JS)
 }
 
+program
+  .version(VERSION)
+  .description('Guld environment detection module.')
+  .command('js')
+  .description('Get the JS execution environment (always node from CLI)')
+  .action(function (cmd) {
+    return console.log(guldEnv.JS)
+  })
+program
+  .command('os')
+  .description('Get the operating system.')
+  .action(async function (cmd) {
+    return console.log((await guldEnv.os()).os)
+  })
+program
+  .command('dist')
+  .description('Get the distro, if linux OS.')
+  .action(async function (cmd) {
+    return console.log((await guldEnv.os()).dist)
+  })
+program
+  .command('release')
+  .description('Get the distro release, if linux OS.')
+  .action(async function (cmd) {
+    return console.log((await guldEnv.os()).release)
+  })
+program
+  .command('all')
+  .description('Get the os, distro, release, and JS environment. In that order.')
+  .action(async function (cmd) {
+    printall()
+  })
 if (process.argv.length === 2) {
   printall()
 } else {
-  program
-    .version(VERSION)
-    .description('Guld environment detection module.')
-    .command('js')
-    .description('Get the JS execution environment (always node from CLI)')
-    .action(function (cmd) {
-      return console.log(guldEnv.JS)
-    })
-  program
-    .command('os')
-    .description('Get the operating system.')
-    .action(async function (cmd) {
-      return console.log((await guldEnv.os()).os)
-    })
-  program
-    .command('dist')
-    .description('Get the distro, if linux OS.')
-    .action(async function (cmd) {
-      return console.log((await guldEnv.os()).dist)
-    })
-  program
-    .command('release')
-    .description('Get the distro release, if linux OS.')
-    .action(async function (cmd) {
-      return console.log((await guldEnv.os()).release)
-    })
-  program
-    .command('all')
-    .description('Get the os, distro, release, and JS environment. In that order.')
-    .action(async function (cmd) {
-      printall()
-    })
   program.parse(process.argv)
 }
 /* eslint-enable no-console */
