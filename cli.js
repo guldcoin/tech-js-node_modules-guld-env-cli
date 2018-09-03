@@ -47,7 +47,8 @@ program
   })
 if (process.argv.length === 2) {
   printall()
-} else {
+} else if (process.argv.length > 2) {
   program.parse(process.argv)
 }
+module.exports = program
 /* eslint-enable no-console */
