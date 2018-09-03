@@ -2,7 +2,7 @@
 // { getJS, getDist, getOS, getRelease }
 const guldEnv = require('guld-env')
 const program = require('commander')
-const VERSION = require('./package.json').version
+const thispkg = require(`${__dirname}/package.json`)
 
 /* eslint-disable no-console */
 async function printall () {
@@ -14,8 +14,9 @@ async function printall () {
 }
 
 program
-  .version(VERSION)
-  .description('Guld environment detection module.')
+  .name(thispkg.name.replace('-cli', ''))
+  .version(thispkg.version)
+  .description(thispkg.description)
   .command('js')
   .description('Get the JS execution environment (always node from CLI)')
   .action(function (cmd) {
