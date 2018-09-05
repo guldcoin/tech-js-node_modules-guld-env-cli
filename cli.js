@@ -3,6 +3,7 @@
 const guldEnv = require('guld-env')
 const program = require('commander')
 const thispkg = require(`${__dirname}/package.json`)
+const runCLI = require('guld-cli-run')
 
 /* eslint-disable no-console */
 async function printall () {
@@ -51,5 +52,6 @@ if (process.argv.length === 2) {
 } else if (process.argv.length > 2) {
   program.parse(process.argv)
 }
-module.exports = program
 /* eslint-enable no-console */
+runCLI.bind(program)()
+module.exports = program
